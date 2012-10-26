@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Swipe Page Navigation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <link rel="shortcut icon" href="./assets/favicon.ico" />
+        <link rel="icon" href="./assets/favicon.ico" type="image/ico">
+        <link rel="stylesheet" type="text/css" href="./assets/demo.css" />
+        <link rel="publisher" href="https://plus.google.com/113857365337532405020" />
+        <link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="../src/assets/spn.css" />
+        <script type="text/javascript" src="../src/js/spn.js"></script>
+
+         <link rel="prev" title="Page 2" href="page2.html" />
+         <link rel="next" title="Page 1" href="page1.html" />
+
+        <link rel="demo" href="http://demo.dsheiko.com/spn" title="Swipe Page Navigation" />
+        <script src="http://demo.dsheiko.com/share/js/sharebar.js" type="text/javascript"></script>
+        <!--[if lt IE 9]>
+            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header role="banner">
+            <div>
+                <hgroup>
+                    <h1>Swipe Page Navigation</h1>
+                    <h2>Provides touch gesture control to navigate site pages</h2>
+                </hgroup>
+                <a class="fork" href="https://github.com/dsheiko/spn">Fork Me on GitHub</a>
+            </div>
+        </header>
+        <section role="main">
+            <div>
+                <article>
+                    <h2>Introduction</h2>
+                    <p>
+Usually we hide all auxiliary page components on mobile to save space of the viewing area. So we have to provide in return alternative navigation tool out of the screen. Since keyboard with navigation keys isn't available, we can use touch gestures.</p>
+
+                    <p>This script enables "swipe left/right" navigation on your site. It looks for sibling page links in the page head section (&lt;link rel="prev" href=".."&gt;) and when found responds on swipe gesture to redirect on the requested page. When user starts the gesture (swiping) the script displays an arrow on the screen edge. But it gives more than that:</p>
+                    <ul>
+                    <li>It warns user about  the captured gesture.</li>
+                    <li>It shows direction of swiping (prev/next).</li>
+                    <li>User can cancel the gesture, moving finger back to the initial position before finishing the gesture.  </li>
+                    </ul>
+
+                </article>
+
+                <article>
+                    <h2>Usage and API</h2>
+                    <p>1. Add to the pages you want available for swipe the navigation siblings links:</p>
+
+                    <textarea rows="5" class="code">
+<head>
+...
+<link rel="prev" title="Page 2" href="page2.html" />
+<link rel="next" title="Page 1" href="page1.html" />
+...
+</head>
+                    </textarea>
+                    <p>2. Now it's enough to include the script and its css:</p>
+                    <textarea rows="2" class="code">
+<link rel="stylesheet" type="text/css" href="./spn.css" />
+<script type="text/javascript" src="./spn.js"></script>
+                    </textarea>
+
+                </article>
+
+                <div class="download">
+                    <a class="btn btn-inverse btn-large" href="https://github.com/dsheiko/spn">Download the latest version from GitHub</a>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <article>
+                <p><var>spn.js</var> is created by <a href="http://dsheiko.com">Dmitry Sheiko</a>.
+                    It's released under the GPLv2 license. </p>
+                <p>If you have any questions or feedback you can use the <a href="https://github.com/dsheiko/spn">GitHub project page.</a>
+                </p>
+            </article>
+        </footer>
+</body>
+</html>

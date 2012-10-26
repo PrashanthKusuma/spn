@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="spn"  basedir="." default="build">
+    <property name="version" value="0.1" />
+    <property name="root.dir" location="." />
+    <property name="src.dir" location="${root.dir}/src/js" />
+    <property name="build.dir" location="${root.dir}/build" />
+    <property name="compressor"  location="/usr/share/yui-compressor/yui-compressor.jar"/>
+    <loadfile property="license" srcfile="../license.txt" />
+    <target name="build">
+
+        <apply executable="java" parallel="false" dest="${build.dir}" taskname="yui">
+            <fileset dir="${src.dir}">
+                <patternset>
+                    <include name="spn.js"/>
+                </patternset>
+            </fileset>
+            <arg line="-jar"></arg>
+            <arg path="${compressor}"></arg>
+            <arg line="--charset UTF-8"/>
+            <arg line="--type js"/>
+            <srcfile/>
+            <arg line="-o"></arg>
+            <mapper type="glob" from="spn.js" to="spn.compressed.js"></mapper>
+            <targetfile/>
+        </apply>
+
+        <concat destfile="${build.dir}/spn.min.js" encoding="UTF-8" >
+            <header trimleading="yes">/* ${license} */
+            </header>
+            <filelist dir="${build.dir}" files= "spn.compressed.js">
+            </filelist>
+        </concat>
+
+          <delete>
+            <filelist dir="${build.dir}" files= "spn.compressed.js">
+            </filelist>
+        </delete>
+
+        <!-- Update version on source files -->
+        <replaceregexp match="@version ([\d\.]+)" replace="@version ${version}" flags="g" byline="true">
+            <fileset dir="${src.dir}" includes="**/*" />
+        </replaceregexp>
+    </target>
+</project>

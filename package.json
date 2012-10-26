@@ -1,0 +1,21 @@
+{
+  "name": "spn",
+  "title": "Swipe Page Navigation",
+  "version": "0.1",
+  "author": "Dmitry Sheiko",
+  "description": "Provides touch gesture control to navigate site pages",
+  "homepage": "http://demo.dsheiko.com/spn/",
+  "licenses": [
+   {
+       "type": "MIT"
+   }],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsheiko/spn"
+  },
+  "main": "./src/js/spn.js",
+  "dependencies": {
+  },
+  "engines": {
+  }
+}
