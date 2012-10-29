@@ -7,10 +7,11 @@
 * Code style: http://docs.jquery.com/JQuery_Core_Style_Guidelines
 */
 
-(function( window ){
+/*global window */
 
-var window = window,
-    document = window.document,
+(function( window ){
+"use strict";
+var document = window.document,
     screen = window.screen,
     touchSwipeListener = function( options ) {
         // Private members
@@ -32,8 +33,8 @@ var window = window,
             },
             extendOptions = function() {
                 for (var prop in defaultOptions) {
-                    if ( defaultOptions.hasOwnProperty( prop ) ) {
-                        options[ prop ] || ( options[ prop ] = defaultOptions[ prop ] );
+                    if ( defaultOptions.hasOwnProperty( prop ) && !options[ prop ] ) {
+                        options[ prop ] = defaultOptions[ prop ];
                     }
                 }
             },
@@ -54,7 +55,9 @@ var window = window,
                     var touches = event.changedTouches || event.touches;
                     if ( touches.length > 0  ) {
                         track.endX = touches[0].pageX;
-                        isDeliberateMove() && options.endHandler( getDirection() );
+                        if ( isDeliberateMove() ) {
+                            options.endHandler( getDirection() );
+                        }
                     }
                 }
             };
@@ -65,7 +68,7 @@ var window = window,
             return {
                 on: function() {},
                 off: function() {}
-            }
+            };
         }
         return {
             on: function() {
@@ -78,8 +81,8 @@ var window = window,
                 document.removeEventListener('touchmove', handler.touchMove);
                 document.removeEventListener('touchend', handler.touchEnd);
             }
-        }
-    }
+        };
+    };
     // Expose global
     window.touchSwipeListener = touchSwipeListener;
 
@@ -88,6 +91,7 @@ var window = window,
 
 
 (function( window ){
+    "use strict";
     var document = window.document,
         // Element helpers
         Util = {
@@ -95,11 +99,11 @@ var window = window,
                 el.className += " " + className;
             },
             hasClass: function( el, className ) {
-                var re = new RegExp("\s?" + className, "gi");
+                var re = new RegExp("\\s?" + className, "gi");
                 return re.test( el.className );
             },
             removeClass: function( el, className ) {
-                var re = new RegExp("\s?" + className, "gi");
+                var re = new RegExp("\\s?" + className, "gi");
                 el.className = el.className.replace(re, "");
             }
         },
@@ -133,8 +137,9 @@ var window = window,
                        moveHandler: function( direction, isDeliberateMove ) {
                            if ( isDeliberateMove ) {
                                if ( elArrow[ direction ] && elLink[ direction ] ) {
-                                   Util.hasClass( elArrow[ direction ], "visible" ) ||
+                                   if ( !Util.hasClass( elArrow[ direction ], "visible" ) ) {
                                        Util.addClass( elArrow[ direction ], "visible" );
+                                   }
                                }
                            } else {
                                Util.removeClass( elArrow.next, "visible" );
@@ -142,7 +147,9 @@ var window = window,
                            }
                        },
                        endHandler: function( direction ) {
-                            that[ direction ] && that[ direction ]();
+                            if ( that[ direction ] ) {
+                                that[ direction ]();
+                            }
                        }
                     });
                     swipeListener.on();
@@ -157,7 +164,7 @@ var window = window,
                         div.className = "spn-direction-sign " + direction;
                         document.getElementsByTagName( "body" )[ 0 ].appendChild( div );
                         return div;
-                    }
+                    };
                     elArrow.next = renderArrow( "next" );
                     elArrow.prev = renderArrow( "prev" );
                 },
@@ -182,16 +189,17 @@ var window = window,
                         window.location.href = elLink.next.href;
                     }
                 }
-            }
-        }())
+            };
+        }()),
+        fn;
 
     // Apply when document is ready
-    document.addEventListener( "DOMContentLoaded", function(){
-        document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
+    document.addEventListener( "DOMContentLoaded", fn = function(){
+        document.removeEventListener( "DOMContentLoaded", fn, false );
         try {
             swipePageNav.init();
-        } catch (e) {
-            alert(e);
+        } catch ( e ) {
+            // Suppress errors. That's an auxiliary module
         }
     }, false );
 
