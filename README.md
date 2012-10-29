@@ -19,15 +19,18 @@ This script enables "swipe left/right" navigation on your site. It looks for sib
 
 1. Add to the pages you want available for swipe the navigation siblings links:
 
+<blockquote>
     <head>
     ...
     <link rel="prev" title="Page 2" href="page2.html" />
     <link rel="next" title="Page 1" href="page1.html" />
     ...
     </head>
-
+</blockquote>
 
 2. Now it's enough to include the script and its css:
 
+<blockquote>
     <link rel="stylesheet" type="text/css" href="./spn.css" />
     <script type="text/javascript" src="./spn.js"></script>
+</blockquote>
