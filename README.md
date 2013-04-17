@@ -18,18 +18,19 @@ This script enables "swipe left/right" navigation on your site. It looks for sib
 ### Usage and API
 
 1. Add to the pages you want available for swipe the navigation siblings links:
-
-<blockquote>
-&nbsp;&nbsp;&nbsp; &lt;head&gt;
-&nbsp;&nbsp;&nbsp; ...
-&nbsp;&nbsp;&nbsp; &lt;link rel="prev" title="Page 2" href="page2.html" /&gt;
-&nbsp;&nbsp;&nbsp; &lt;link rel="next" title="Page 1" href="page1.html" /&gt;
-&nbsp;&nbsp;&nbsp; ...<br>&nbsp;&nbsp;&nbsp; &lt;/head&gt;
-</blockquote>
+```
+    <head>
+        ...
+        <link rel="prev" title="Page 2" href="page2.html" />
+        <link rel="next" title="Page 1" href="page1.html" />
+        ...
+    </head>
+```
 
 2. Now it's enough to include the script and its css:
 
-<blockquote>
-&lt;link rel="stylesheet" type="text/css" href="./spn.css" /&gt;
-&lt;script type="text/javascript" src="./spn.js"&gt;&lt;/script&gt;
-</blockquote>
+```
+    <link rel="stylesheet" type="text/css" href="../src/assets/spn.css" />
+    <script type="text/javascript" src="../src/js/spn.js"></script>
+```
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/fd6941c91b72d881c4786416a69c4248 "githalytics.com")](http://githalytics.com/dsheiko/spn)
