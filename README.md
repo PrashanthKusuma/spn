@@ -33,4 +33,5 @@ This script enables "swipe left/right" navigation on your site. It looks for sib
     <link rel="stylesheet" type="text/css" href="../src/assets/spn.css" />
     <script type="text/javascript" src="../src/js/spn.js"></script>
 ```
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/fd6941c91b72d881c4786416a69c4248 "githalytics.com")](http://githalytics.com/dsheiko/spn)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-1150677-13/dsheiko/spn)](http://githalytics.com/dsheiko/spn)
